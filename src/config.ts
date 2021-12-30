@@ -1,8 +1,5 @@
 import * as dotenv from 'dotenv'
 
-/**
- * default is .env
- */
 dotenv.config()
 
 const config = {

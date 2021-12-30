@@ -2,10 +2,12 @@ import {AuthLoginBodyRequest, AuthRegisterBodyRequest} from "../types/auth";
 import User from '../models_Users/User'
 import {UserSchemeWithDocument} from "../models_Users/schema";
 
-export const handleLogin = async (req: AuthLoginBodyRequest) => {
+export const handleLogin = async (req: AuthLoginBodyRequest): Promise<UserSchemeWithDocument> => {
     const {username, password} = req.body;
 
-    return `handleLogin (${username}, ${password})`;
+    const user = User.userLogin(username, password);
+
+    return user;
 };
 
 export const handleRegister = async (req: AuthRegisterBodyRequest): Promise<UserSchemeWithDocument> => {

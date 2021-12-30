@@ -7,19 +7,17 @@ const buildApp = (options: FastifyServerOptions) => {
     app.get('/', async () => 'OK');
     app.register(authRouters, {prefix: '/auth'});
 
-    // app.setErrorHandler((error, request, reply) => {
-    //     console.log(error.statusCode)
-    //     console.log(error.code)
-    //
-    //     reply
-    //         .status(error.statusCode)
-    //         .send({
-    //             error: {
-    //                 message: error.message,
-    //                 code: error.code
-    //             }
-    //         });
-    // });
+    app.setErrorHandler((error, request, reply) => {
+
+        reply
+            .status(error.statusCode || 500)
+            .send({
+                error: {
+                    message: error.message,
+                    code: error.code
+                }
+            });
+    });
     return app;
 };
 
