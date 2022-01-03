@@ -1,5 +1,6 @@
 import fastify, {FastifyServerOptions} from "fastify";
 import authRouters from "./routers/auth";
+import {CustomError} from "./utils/custom-error";
 
 const buildApp = (options: FastifyServerOptions) => {
     const app = fastify(options);
@@ -8,13 +9,16 @@ const buildApp = (options: FastifyServerOptions) => {
     app.register(authRouters, {prefix: '/auth'});
 
     app.setErrorHandler((error, request, reply) => {
+       const customError: CustomError = error;
 
+        console.log(customError)
         reply
             .status(error.statusCode || 500)
             .send({
                 error: {
-                    message: error.message,
-                    code: error.code
+                    message: customError.message,
+                    code: customError.code,
+                    data: customError.data
                 }
             });
     });

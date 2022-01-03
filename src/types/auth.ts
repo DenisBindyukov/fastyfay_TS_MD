@@ -1,4 +1,4 @@
-import {FastifyRequest} from "fastify";
+import {FastifyReply, FastifyRequest} from "fastify";
 
 export type AuthLoginBodyRequest = FastifyRequest<{
     Body: {
@@ -7,7 +7,7 @@ export type AuthLoginBodyRequest = FastifyRequest<{
     }
 }>
 
-export type AuthRegisterBodyRequest = FastifyRequest<{
+export type AuthLoginBodyResponse = FastifyRequest<{
     Body: {
         username: string
         password: string
@@ -15,5 +15,13 @@ export type AuthRegisterBodyRequest = FastifyRequest<{
         name: string
         surname: string
     }
-
 }>
+
+export interface AuthRegisterBodyResponse {
+    username: string
+    email: string
+    name: string
+    surname: string
+    accessToken: string
+}
+

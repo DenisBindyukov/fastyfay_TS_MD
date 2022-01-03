@@ -10,7 +10,7 @@ const config = {
         uri: process.env.MONGO_URI || 'mongodb+srv://den_flex:72983451linkoln@cluster0.goukm.mongodb.net/Database?retryWrites=true&w=majority'
     },
     secret: {
-        accessToken: process.env.SECRET_ACCESS_TOKEN || ''
+        accessToken: process.env.SECRET_ACCESS_TOKEN || 'secret'
     }
 }
 
