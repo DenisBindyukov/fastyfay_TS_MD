@@ -1,12 +1,20 @@
 import fastify, {FastifyServerOptions} from "fastify";
 import authRouters from "./routers/auth";
 import {CustomError} from "./utils/custom-error";
+import userRouters from "./routers/user";
+
+declare module 'fastify' {
+    interface FastifyRequest {
+        userId?: string
+    }
+}
 
 const buildApp = (options: FastifyServerOptions) => {
     const app = fastify(options);
 
     app.get('/', async () => 'OK');
     app.register(authRouters, {prefix: '/auth'});
+    app.register(userRouters, {prefix: '/user'});
 
     app.setErrorHandler((error, request, reply) => {
        const customError: CustomError = error;

@@ -18,10 +18,15 @@ export type AuthLoginBodyResponse = FastifyRequest<{
 }>
 
 export interface AuthRegisterBodyResponse {
+    id: string
     username: string
     email: string
     name: string
     surname: string
+    accessToken?: string
+}
+
+export interface AuthRefreshTokenResponse {
     accessToken: string
 }
 
