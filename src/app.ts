@@ -11,8 +11,11 @@ declare module 'fastify' {
 
 const buildApp = (options: FastifyServerOptions) => {
     const app = fastify(options);
-
-    app.get('/', async () => 'OK');
+    debugger
+    console.log('hello')
+    app.get('/', async () => {
+       return  'OK'
+    });
     app.register(authRouters, {prefix: '/auth'});
     app.register(userRouters, {prefix: '/user'});
 

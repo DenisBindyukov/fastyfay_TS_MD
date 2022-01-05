@@ -7,7 +7,7 @@ const options: FastifyServerOptions = {
     logger: true
 }
 const app = buildApp(options);
-
+debugger
 mongoose.connect(config.mongodb.uri, {
     useCreateIndex: true,
     useNewUrlParser: true,
