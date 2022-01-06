@@ -11,16 +11,16 @@ declare module 'fastify' {
 
 const buildApp = (options: FastifyServerOptions) => {
     const app = fastify(options);
-    debugger
-    console.log('hello')
-    app.get('/', async () => {
-       return  'OK'
-    });
+    app.register(require('fastify-cors'));
+
+    // app.get('/', async () => {
+    //    return  'OK'
+    // });
     app.register(authRouters, {prefix: '/auth'});
-    app.register(userRouters, {prefix: '/user'});
+    app.register(userRouters, {prefix: '/api'});
 
     app.setErrorHandler((error, request, reply) => {
-       const customError: CustomError = error;
+        const customError: CustomError = error;
 
         console.log(customError)
         reply

@@ -3,9 +3,14 @@ import mongoose = require('mongoose')
 import buildApp from './src/app'
 import config from './src/config'
 
+const fastify = require('fastify')()
+
 const options: FastifyServerOptions = {
     logger: true
 }
+
+
+
 const app = buildApp(options);
 debugger
 mongoose.connect(config.mongodb.uri, {

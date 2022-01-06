@@ -5,6 +5,7 @@ export declare const SomeError: CustomErrorParams;
 export declare const incorrectValue: CustomErrorParams;
 export declare const requiredFields: CustomErrorParams;
 export declare const AuthMissingHeaders: CustomErrorParams;
+export declare const ServerError: CustomErrorParams;
 declare const _default: {
     AuthInvalidUsername: CustomErrorParams;
     AuthInvalidPassword: CustomErrorParams;
@@ -12,5 +13,6 @@ declare const _default: {
     incorrectValue: CustomErrorParams;
     requiredFields: CustomErrorParams;
     AuthMissingHeaders: CustomErrorParams;
+    ServerError: CustomErrorParams;
 };
 export default _default;

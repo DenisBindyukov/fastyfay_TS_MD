@@ -9,5 +9,6 @@ const userRouters = async (app) => {
         ]
     }, user_1.handleUserMe);
     app.post('/creat', user_1.handlerAddUser);
+    app.get('/', user_1.handlerGetUsers);
 };
 exports.default = userRouters;

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthMissingHeaders = exports.requiredFields = exports.incorrectValue = exports.SomeError = exports.AuthInvalidPassword = exports.AuthInvalidUsername = void 0;
+exports.ServerError = exports.AuthMissingHeaders = exports.requiredFields = exports.incorrectValue = exports.SomeError = exports.AuthInvalidPassword = exports.AuthInvalidUsername = void 0;
 exports.AuthInvalidUsername = {
     message: 'Unauthorized',
     code: 'AUTH001',
@@ -31,11 +31,17 @@ exports.AuthMissingHeaders = {
     code: 'AUTH006',
     statusCode: 401,
 };
+exports.ServerError = {
+    message: "server error",
+    code: 'AUTH007',
+    statusCode: 500,
+};
 exports.default = {
     AuthInvalidUsername: exports.AuthInvalidUsername,
     AuthInvalidPassword: exports.AuthInvalidPassword,
     SomeError: exports.SomeError,
     incorrectValue: exports.incorrectValue,
     requiredFields: exports.requiredFields,
-    AuthMissingHeaders: exports.AuthMissingHeaders
+    AuthMissingHeaders: exports.AuthMissingHeaders,
+    ServerError: exports.ServerError
 };

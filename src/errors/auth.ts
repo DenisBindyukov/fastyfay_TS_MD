@@ -36,6 +36,12 @@ export const AuthMissingHeaders: CustomErrorParams = {
     statusCode: 401,
 };
 
+export const ServerError: CustomErrorParams = {
+    message: "server error",
+    code: 'AUTH007',
+    statusCode: 500,
+};
+
 
 export default {
     AuthInvalidUsername,
@@ -43,5 +49,6 @@ export default {
     SomeError,
     incorrectValue,
     requiredFields,
-    AuthMissingHeaders
+    AuthMissingHeaders,
+    ServerError
 }
