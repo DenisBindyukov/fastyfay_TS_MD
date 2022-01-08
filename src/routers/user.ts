@@ -1,5 +1,5 @@
 import {FastifyInstance} from "fastify";
-import {handlerAddUser, handlerGetUsers, handleUserMe} from "../handlers/user";
+import {handlerAddUser, handlerDeleteUser, handlerGetUsers, handleUserMe} from "../controllers/user.constroller";
 import {verifyAccessToken} from '../hooks/auth'
 
 
@@ -9,8 +9,9 @@ const userRouters = async (app: FastifyInstance) => {
             verifyAccessToken
         ]
     }, handleUserMe)
-    app.post('/creat', handlerAddUser);
-    app.get('/', handlerGetUsers);
+    app.post('/user', handlerAddUser);
+    app.get('/user', handlerGetUsers);
+    app.delete('/user', handlerDeleteUser);
 };
 
 

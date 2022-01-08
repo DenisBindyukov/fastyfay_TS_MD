@@ -1,5 +1,5 @@
 import {FastifyInstance} from "fastify";
-import {handleLogin, handleRefreshToken} from "../handlers/auth";
+import {handleLogin, handleRefreshToken} from "../controllers/auth.controller";
 import {verifyAccessToken} from "../hooks/auth";
 
 const authRouters = async (app: FastifyInstance) => {

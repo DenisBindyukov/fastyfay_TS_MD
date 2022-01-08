@@ -19,12 +19,16 @@ const userSchema = new Schema<UserSchemeWithDocument>({
     email: {
         type: 'string',
     },
+    aboutMe: {
+        type: 'string',
+        required: true
+    },
     name: {
         type: 'string',
     },
 }, {
     versionKey: false,
-    timestamps: true //createdAt updateAt
+    timestamps: false //createdAt updateAt
 });
 
 export default model(collection, userSchema)

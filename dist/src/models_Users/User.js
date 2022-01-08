@@ -7,7 +7,7 @@ const schema_1 = __importDefault(require("./schema"));
 const custom_error_1 = __importDefault(require("../utils/custom-error"));
 const auth_1 = __importDefault(require("../errors/auth"));
 const createNewUser = async (doc) => {
-    if (!doc.name || !doc.password) {
+    if (!doc.name || !doc.password || !doc.aboutMe) {
         (0, custom_error_1.default)(auth_1.default.requiredFields);
     }
     const user = new schema_1.default(doc);

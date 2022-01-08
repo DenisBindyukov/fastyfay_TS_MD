@@ -6,7 +6,7 @@ import authErrors, {requiredFields} from '../errors/auth';
 
 const createNewUser = async (doc: UsersSchema): Promise<UserSchemeWithDocument> => {
 
-    if (!doc.name || !doc.password) {
+    if (!doc.name || !doc.password || !doc.aboutMe) {
         customError(authErrors.requiredFields);
     }
 

@@ -14,11 +14,15 @@ const userSchema = new mongoose_1.Schema({
     email: {
         type: 'string',
     },
+    aboutMe: {
+        type: 'string',
+        required: true
+    },
     name: {
         type: 'string',
     },
 }, {
     versionKey: false,
-    timestamps: true //createdAt updateAt
+    timestamps: false //createdAt updateAt
 });
 exports.default = (0, mongoose_1.model)(collection, userSchema);

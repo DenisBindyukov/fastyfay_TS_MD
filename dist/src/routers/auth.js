@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const auth_1 = require("../handlers/auth");
-const auth_2 = require("../hooks/auth");
+const auth_controller_1 = require("../controllers/auth.controller");
+const auth_1 = require("../hooks/auth");
 const authRouters = async (app) => {
-    app.post('/login', auth_1.handleLogin);
+    app.post('/login', auth_controller_1.handleLogin);
     app.post('/refresh-token', {
         preHandler: [
-            auth_2.verifyAccessToken
+            auth_1.verifyAccessToken
         ]
-    }, auth_1.handleRefreshToken);
+    }, auth_controller_1.handleRefreshToken);
 };
 exports.default = authRouters;

@@ -4,14 +4,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handlerGetUsers = exports.handleUserMe = exports.handlerAddUser = void 0;
-const User_1 = __importDefault(require("../models_Users/User"));
 const schema_1 = __importDefault(require("../models_Users/schema"));
 const Login_1 = require("../models_Users/Login");
 const custom_error_1 = __importDefault(require("../utils/custom-error"));
 const auth_1 = __importDefault(require("../errors/auth"));
+const createNewUser = async (doc) => {
+    if (!doc.name || !doc.password) {
+        (0, custom_error_1.default)(auth_1.default.requiredFields);
+    }
+    const user = new schema_1.default(doc);
+    return user.save();
+};
 const handlerAddUser = async (req) => {
     const { username, password, email, name, surname } = req.body;
-    const user = await User_1.default.createNewUser({
+    const user = await createNewUser({
         username,
         password,
         email,

@@ -10,6 +10,7 @@ export declare type AuthLoginBodyResponse = FastifyRequest<{
         username: string;
         password: string;
         email: string;
+        aboutMe: string;
         name: string;
         surname: string;
     };
