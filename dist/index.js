@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require("mongoose");
 const app_1 = __importDefault(require("./src/app"));
 const config_1 = __importDefault(require("./src/config"));
-const fastify = require('fastify')();
 const options = {
     logger: true
 };

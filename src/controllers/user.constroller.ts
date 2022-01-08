@@ -4,19 +4,20 @@ import Users, {UserSchemeWithDocument} from '../models_Users/schema'
 import {FastifyRequest, FastifyReply} from "fastify";
 import {getUserById} from "../models_Users/Login";
 import customError from "../utils/custom-error";
-import authErrors, {ServerError} from "../errors/auth";
+import authErrors from "../errors/auth";
 import {UsersSchema} from "../types/models/UsersType";
+import UserService from "../service/UserService";
 
-const createNewUser = async (doc: UsersSchema): Promise<UserSchemeWithDocument> => {
-
-    if (!doc.name || !doc.password || !doc.aboutMe) {
-        customError(authErrors.requiredFields);
-    }
-
-    const user = new Users(doc);
-
-    return user.save();
-};
+// const createNewUser = async (doc: UsersSchema): Promise<UserSchemeWithDocument> => {
+//
+//     if (!doc.name || !doc.password || !doc.aboutMe) {
+//         customError(authErrors.requiredFields);
+//     }
+//
+//     const user = new Users(doc);
+//
+//     return user.save();
+// };
 
 export const handlerAddUser = async (req: AuthLoginBodyResponse, reply: FastifyReply) => {
     const {
@@ -28,7 +29,7 @@ export const handlerAddUser = async (req: AuthLoginBodyResponse, reply: FastifyR
         aboutMe
     } = req.body;
 
-    const user = await createNewUser({
+    const user = await UserService.createNewUser({
         username,
         password,
         email,
@@ -47,7 +48,7 @@ export const handlerAddUser = async (req: AuthLoginBodyResponse, reply: FastifyR
 }
 
 
-export const handleUserMe = async (request: FastifyRequest) => {
+ const handleUserMe = async (request: FastifyRequest) => {
 
     const {userId} = request;
 
@@ -56,7 +57,7 @@ export const handleUserMe = async (request: FastifyRequest) => {
     return user;
 }
 
-export const handlerGetUsers = async (request: FastifyRequest, reply: FastifyReply) => {
+ const handlerGetUsers = async (request: FastifyRequest, reply: FastifyReply) => {
     try {
         const users = await Users.find();
         return reply.code(200).send({
@@ -71,7 +72,7 @@ export const handlerGetUsers = async (request: FastifyRequest, reply: FastifyRep
 
 };
 
-export const handlerDeleteUser = async (request: FastifyRequest, reply: FastifyReply) => {
+ const handlerDeleteUser = async (request: FastifyRequest, reply: FastifyReply) => {
     try {
 
     } catch (err) {
