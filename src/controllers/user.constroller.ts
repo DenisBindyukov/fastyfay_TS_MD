@@ -5,19 +5,8 @@ import {FastifyRequest, FastifyReply} from "fastify";
 import {getUserById} from "../models_Users/Login";
 import customError from "../utils/custom-error";
 import authErrors from "../errors/auth";
-import {UsersSchema} from "../types/models/UsersType";
 import UserService from "../service/UserService";
 
-// const createNewUser = async (doc: UsersSchema): Promise<UserSchemeWithDocument> => {
-//
-//     if (!doc.name || !doc.password || !doc.aboutMe) {
-//         customError(authErrors.requiredFields);
-//     }
-//
-//     const user = new Users(doc);
-//
-//     return user.save();
-// };
 
 export const handlerAddUser = async (req: AuthLoginBodyResponse, reply: FastifyReply) => {
     const {
