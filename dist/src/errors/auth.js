@@ -22,7 +22,7 @@ exports.incorrectValue = {
     statusCode: 400,
 };
 exports.requiredFields = {
-    message: "username, password, aboutMe are required fields",
+    message: "username, aboutMe are required fields",
     code: 'AUTH005',
     statusCode: 400,
 };

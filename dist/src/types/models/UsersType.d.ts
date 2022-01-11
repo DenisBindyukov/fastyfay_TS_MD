@@ -1,8 +1,8 @@
 export interface UsersSchema {
     username: string;
-    password: string;
+    password?: string;
     email: string;
     aboutMe: string;
-    name?: string | null;
+    lastname?: string | null;
     surname?: string | null;
 }

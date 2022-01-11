@@ -8,10 +8,10 @@ export declare type AuthLoginBodyRequest = FastifyRequest<{
 export declare type AuthLoginBodyResponse = FastifyRequest<{
     Body: {
         username: string;
-        password: string;
+        password?: string;
         email: string;
         aboutMe: string;
-        name: string;
+        lastname: string;
         surname: string;
     };
 }>;

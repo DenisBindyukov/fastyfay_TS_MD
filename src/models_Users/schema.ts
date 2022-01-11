@@ -14,7 +14,6 @@ const userSchema = new Schema<UserSchemeWithDocument>({
     },
     password: {
         type: 'string',
-        required: true
     },
     email: {
         type: 'string',
@@ -23,9 +22,12 @@ const userSchema = new Schema<UserSchemeWithDocument>({
         type: 'string',
         required: true
     },
-    name: {
+    lastname: {
         type: 'string',
     },
+    surname: {
+        type: 'string'
+    }
 }, {
     versionKey: false,
     timestamps: false //createdAt updateAt

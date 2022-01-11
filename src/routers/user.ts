@@ -9,9 +9,9 @@ const userRouters = async (app: FastifyInstance) => {
             verifyAccessToken
         ]
     }, User.handleUserMe)
-    app.post('/user', User.handlerAddUser);
     app.get('/user', User.handlerGetUsers);
-    app.delete('/user', User.handlerDeleteUser);
+    app.post('/user', User.handlerAddUser);
+    app.delete('/user/:id', User.handlerDeleteUser);
 };
 
 

@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { FastifyServerOptions } from "fastify";
 declare module 'fastify' {
     interface FastifyRequest {

@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { FastifyRequest } from "fastify";
 export declare const verifyAccessToken: (request: FastifyRequest) => Promise<boolean>;
 declare const _default: {

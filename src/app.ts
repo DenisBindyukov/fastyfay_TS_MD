@@ -13,16 +13,16 @@ const buildApp = (options: FastifyServerOptions) => {
     const app = fastify(options);
     app.register(require('fastify-cors'));
 
-    // app.get('/', async () => {
-    //    return  'OK'
-    // });
+    app.get('/', async () => {
+       return  'OK'
+    });
     app.register(authRouters, {prefix: '/auth'});
     app.register(userRouters, {prefix: '/api'});
 
     app.setErrorHandler((error, request, reply) => {
         const customError: CustomError = error;
 
-        console.log(customError)
+        console.log(customError);
         reply
             .status(error.statusCode || 500)
             .send({

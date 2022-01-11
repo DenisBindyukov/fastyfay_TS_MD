@@ -1,4 +1,5 @@
-import {FastifyReply, FastifyRequest} from "fastify";
+import {FastifyRequest} from "fastify";
+
 
 export type AuthLoginBodyRequest = FastifyRequest<{
     Body: {
@@ -10,10 +11,10 @@ export type AuthLoginBodyRequest = FastifyRequest<{
 export type AuthLoginBodyResponse = FastifyRequest<{
     Body: {
         username: string
-        password: string
+        password?: string
         email: string
         aboutMe: string
-        name: string
+        lastname: string
         surname: string
     }
 }>

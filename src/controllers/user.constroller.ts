@@ -1,19 +1,28 @@
 import {AuthLoginBodyResponse} from "../types/auth";
-import User from "../models_Users/User";
-import Users, {UserSchemeWithDocument} from '../models_Users/schema'
+import Users from '../models_Users/schema'
 import {FastifyRequest, FastifyReply} from "fastify";
 import {getUserById} from "../models_Users/Login";
 import customError from "../utils/custom-error";
 import authErrors from "../errors/auth";
 import UserService from "../service/UserService";
+import {UpdateUserBodyResponse, UserIdResponse} from "../types/user";
 
 
-export const handlerAddUser = async (req: AuthLoginBodyResponse, reply: FastifyReply) => {
+const handleUserMe = async (request: FastifyRequest) => {
+
+    const {userId} = request;
+
+    const user = await getUserById(userId);
+
+    return user;
+}
+
+ const handlerAddUser = async (req: AuthLoginBodyResponse, reply: FastifyReply) => {
     const {
         username,
         password,
         email,
-        name,
+        lastname,
         surname,
         aboutMe
     } = req.body;
@@ -22,7 +31,7 @@ export const handlerAddUser = async (req: AuthLoginBodyResponse, reply: FastifyR
         username,
         password,
         email,
-        name,
+        lastname,
         surname,
         aboutMe
     });
@@ -34,17 +43,8 @@ export const handlerAddUser = async (req: AuthLoginBodyResponse, reply: FastifyR
         resultCode: 0
     });
 
-}
+};
 
-
- const handleUserMe = async (request: FastifyRequest) => {
-
-    const {userId} = request;
-
-    const user = await getUserById(userId);
-
-    return user;
-}
 
  const handlerGetUsers = async (request: FastifyRequest, reply: FastifyReply) => {
     try {
@@ -61,9 +61,29 @@ export const handlerAddUser = async (req: AuthLoginBodyResponse, reply: FastifyR
 
 };
 
- const handlerDeleteUser = async (request: FastifyRequest, reply: FastifyReply) => {
+ const handlerDeleteUser = async (request: UserIdResponse, reply: FastifyReply) => {
+     const userId = request.params.id;
+     debugger
     try {
+         await UserService.deleteUser(userId);
 
+         reply.code(200).send({
+             message: "Success",
+             resultCode: 0
+         })
+    } catch (err) {
+        customError(authErrors.ServerError);
+    }
+}
+
+const handlerUpdateUser = async (request: UpdateUserBodyResponse, reply: FastifyReply) => {
+    try {
+        await UserService.deleteUser(userId);
+
+        reply.code(200).send({
+            message: "Success",
+            resultCode: 0
+        })
     } catch (err) {
         customError(authErrors.ServerError);
     }
@@ -74,5 +94,6 @@ export default {
     handlerAddUser,
     handleUserMe,
     handlerGetUsers,
-    handlerDeleteUser
+    handlerDeleteUser,
+    handlerUpdateUser,
 }

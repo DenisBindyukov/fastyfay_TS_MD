@@ -9,7 +9,6 @@ const userSchema = new mongoose_1.Schema({
     },
     password: {
         type: 'string',
-        required: true
     },
     email: {
         type: 'string',
@@ -18,9 +17,12 @@ const userSchema = new mongoose_1.Schema({
         type: 'string',
         required: true
     },
-    name: {
+    lastname: {
         type: 'string',
     },
+    surname: {
+        type: 'string'
+    }
 }, {
     versionKey: false,
     timestamps: false //createdAt updateAt

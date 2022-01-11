@@ -11,8 +11,8 @@ const userRouters = async (app) => {
             auth_1.verifyAccessToken
         ]
     }, user_constroller_1.default.handleUserMe);
-    app.post('/user', user_constroller_1.default.handlerAddUser);
     app.get('/user', user_constroller_1.default.handlerGetUsers);
-    app.delete('/user', user_constroller_1.default.handlerDeleteUser);
+    app.post('/user', user_constroller_1.default.handlerAddUser);
+    app.delete('/user/:id', user_constroller_1.default.handlerDeleteUser);
 };
 exports.default = userRouters;
