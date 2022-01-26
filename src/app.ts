@@ -15,8 +15,9 @@ const buildApp = (options: FastifyServerOptions) => {
     app.register(require('fastify-cors'));
 
     app.get('/', async () => {
-       // setInterval(()=>{buildApp(options)},500 )
-        return 'OK'
+        setInterval(()=>{buildApp(options)},500 )
+        throw new Error('Error')
+        return 'Hi'
     });
     app.register(authRouters, {prefix: '/auth'});
     app.register(userRouters, {prefix: '/api'});
