@@ -10,7 +10,7 @@ const  mapUserResponseObject = (userId: string, user: UserSchemeWithDocument, ac
     const response: AuthRegisterBodyResponse = {
         id: userId,
         username: user.username,
-        name: user.name,
+        name: user.username,
         email: user.email,
         surname: user.username,
         accessToken
