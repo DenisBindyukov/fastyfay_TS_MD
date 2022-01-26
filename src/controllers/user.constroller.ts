@@ -76,18 +76,18 @@ const handleUserMe = async (request: FastifyRequest) => {
     }
 }
 
-const handlerUpdateUser = async (request: UpdateUserBodyResponse, reply: FastifyReply) => {
-    try {
-        await UserService.deleteUser(userId);
-
-        reply.code(200).send({
-            message: "Success",
-            resultCode: 0
-        })
-    } catch (err) {
-        customError(authErrors.ServerError);
-    }
-}
+// const handlerUpdateUser = async (request: UpdateUserBodyResponse, reply: FastifyReply) => {
+//     try {
+//         await UserService.deleteUser(userId);
+//
+//         reply.code(200).send({
+//             message: "Success",
+//             resultCode: 0
+//         })
+//     } catch (err) {
+//         customError(authErrors.ServerError);
+//     }
+// }
 
 
 export default {
@@ -95,5 +95,4 @@ export default {
     handleUserMe,
     handlerGetUsers,
     handlerDeleteUser,
-    handlerUpdateUser,
 }

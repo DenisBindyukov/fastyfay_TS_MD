@@ -9,7 +9,7 @@ const options: FastifyServerOptions = {
 }
 
 const app = buildApp(options);
-debugger
+
 mongoose.connect(config.mongodb.uri, {
     useCreateIndex: true,
     useNewUrlParser: true,

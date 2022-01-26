@@ -25,7 +25,6 @@ class UserService {
 
         await User.findByIdAndDelete(userId);
 
-        debugger
     }
 
     updateUser = async (doc: UsersSchema): Promise<UserSchemeWithDocument> => {
@@ -36,7 +35,6 @@ class UserService {
 
        const user =  await User.findByIdAndUpdate(doc);
 
-        debugger
         return user
     }
 }

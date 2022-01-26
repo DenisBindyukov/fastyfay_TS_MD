@@ -10,7 +10,6 @@ const options = {
     logger: true
 };
 const app = (0, app_1.default)(options);
-debugger;
 mongoose.connect(config_1.default.mongodb.uri, {
     useCreateIndex: true,
     useNewUrlParser: true,
