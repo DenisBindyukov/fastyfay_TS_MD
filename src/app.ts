@@ -2,7 +2,6 @@ import fastify, {FastifyServerOptions} from "fastify";
 import authRouters from "./routers/auth";
 import {CustomError} from "./utils/custom-error";
 import userRouters from "./routers/user";
-import {setInterval} from "timers";
 
 declare module 'fastify' {
     interface FastifyRequest {
@@ -15,9 +14,7 @@ const buildApp = (options: FastifyServerOptions) => {
     app.register(require('fastify-cors'));
 
     app.get('/', async () => {
-        setInterval(()=>{buildApp(options)},500 )
-        throw new Error('Error')
-        return 'Hi'
+       return  'OK'
     });
     app.register(authRouters, {prefix: '/auth'});
     app.register(userRouters, {prefix: '/api'});
