@@ -23,7 +23,7 @@ const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const config = {
     env: process.env.NODE_ENV || 'development',
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 3002,
     host: process.env.HOST || '0.0.0.0',
     mongodb: {
         uri: process.env.MONGO_URI || 'mongodb+srv://den_flex:72983451linkoln@cluster0.goukm.mongodb.net/Database?retryWrites=true&w=majority'
